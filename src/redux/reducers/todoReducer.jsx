@@ -41,7 +41,8 @@ export const todoReducer = (state = initState, action) => {
         isEditing: !state.isEditing,
       };
     case UPDATE_TODO:
-      const oldTodos = state.todos.map((todo) => {
+      const oldTodos = [...state.todos];
+      oldTodos.map((todo) => {
         if (todo.id === state.editId) {
           todo.title = action.payload;
         }

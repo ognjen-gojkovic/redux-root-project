@@ -26,25 +26,16 @@ const TodoForm = () => {
   console.log(title);
   return (
     <React.Fragment>
-      {store.isEditing ? (
-        <form onSubmit={updateEdit}>
-          <input
-            type="text"
-            placeholder="Enter Task..."
-            onChange={(e) => changeHandler(e)}
-          />
-          <button type="submit">Submit Edit</button>
-        </form>
-      ) : (
-        <form onSubmit={submitHandler}>
-          <input
-            type="text"
-            placeholder="Enter Task..."
-            onChange={(e) => changeHandler(e)}
-          />
-          <button type="submit">Submit</button>
-        </form>
-      )}
+      <form onSubmit={store.isEditing ? updateEdit : submitHandler}>
+        <input
+          type="text"
+          placeholder="Enter Task..."
+          onChange={(e) => changeHandler(e)}
+        />
+        <button type="submit">
+          {store.isEditing ? "Submit Edit" : "Submit"}
+        </button>
+      </form>
     </React.Fragment>
   );
 };
